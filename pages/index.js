@@ -1,59 +1,20 @@
-import Link from "next/link";
 import React, { Component } from 'react';
-import { useEffect } from "react";
-import Navbar from "../components/Navbar";
-import Header from "../components/Header";
-
-// const index = () => {
-//   useEffect(() => {
-//     document.title = "Home"
-//   }, [])
-//   return (
-    // <div>
-    //   Hello World
-    //   <nav>
-    //     <ul className="menu-bar">
-    //       <li>
-    //         <Link href="/">
-    //           <a>
-    //             Home
-    //           </a>
-    //         </Link>
-    //       </li>
-    //       <li>
-    //         <Link href="/about">
-    //           <a>
-    //             About
-    //           </a>
-    //         </Link>
-    //       </li>
-    //       <li>
-    //         <Link href="/dashboard">
-    //           <a>
-    //             Dashboard
-    //           </a>
-    //         </Link>
-    //       </li>
-    //       <li>
-    //         <Link href="/contact">
-    //           {/* <a> */}
-    //             Contact
-    //           {/* </a> */}
-    //         </Link>
-    //       </li>
-    //     </ul>
-    //   </nav>
-    // </div>
-//   );
-// }
+import Head from "next/head";
+import LoginForm from '../components/loginForm';
 
 
 class index extends Component {
   render() {
     return (
-      <>
-      <Header />
-    </>
+      <div className="flex flex-col items-center justify-center min-h-screen py-2 bg-gray-100">
+        <Head >
+          <title>Login</title>
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
+        <main className="flex flex-col items-center justify-center w-full flex-1 px-20 text-center">
+          <LoginForm />
+        </main>
+      </div>
     );
   }
 }
