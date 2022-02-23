@@ -12,13 +12,15 @@ export async function getStaticPaths() {
 
 export async function getStaticProps(context){
   const {params} = context
+  console.log(`Regenrating ${params.productId}`)
   const resp = await fetch(`http://localhost:4000/products/${params.productId}`)
   const data = await resp.json()
 
   return{
     props:{
       product: data
-    }
+    },
+    revalidate: 5
   }
 }
 

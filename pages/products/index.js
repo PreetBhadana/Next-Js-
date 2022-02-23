@@ -1,14 +1,15 @@
 import Link from "next/link";
 
 export async function getStaticProps(){
-
+  console.log("Genrating / Regenrating Pre-render Data")
   const res = await fetch('http://localhost:4000/products')
   const data = await res.json();
 
   return{
     props: {
       data
-    }
+    },
+    revalidate: 10
   }
 }
 
@@ -24,6 +25,7 @@ function index({data}) {
             <Link href={`/products/${prod.id}`} passHref>
               <h2> {prod.title}</h2>
             </Link>
+            <h2>{prod.price}</h2>
           </div>
         )
         })
