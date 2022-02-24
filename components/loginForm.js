@@ -1,11 +1,48 @@
 import React, { Component } from 'react';
+import Router from 'next/router';
+import axios from 'axios';
+
+export async function getStaticProps() {
+  const res = await fetch('https://jsonplaceholder.typicode.com/users')
+  const data = await res.json()
+  return{
+    props: {
+      users: data
+    }
+  }
+}
+
+// const logIn = async (req) => {
+//   const res = await fetch(`https://reqres.in/api/login`,{
+//     method: "POST",
+//     body: JSON.stringify({ 
+//       req
+//     })
+//   });
+
+//   const result = await res.json()
+//   return result
+// }
 
 class LoginForm extends Component {
   constructor(props){
     super(props)
     this.state = {
       email: '',
-      password: ''
+      password: '',
+      token: "",
+      show: false,
+      alert_message: "",
+      alert_type: "",
+
+    }
+  }
+
+  componentDidMount() {
+    let token = localStorage.getItem('token');
+    if(token){
+      //this.setState({token: token})
+      Router.push('/weatherapp')
     }
   }
 
@@ -17,10 +54,71 @@ class LoginForm extends Component {
     })
   }
 
+  processLogIn = (e) => {
+    e.preventDefault()
+    const req = {
+      email: this.state.email,
+      password: this.state.password,
+    };
+
+    const addComment = async (req) => {
+      const email = this.state.email
+      const password = this.state.password
+      const res = await fetch('/api/loginApi', {
+        method: 'POST',
+        body: JSON.stringify({
+          email,
+          password
+        }),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      const data = await res.json()
+      console.log(data)
+      console.log(res.status)
+      if(res){
+        if (res.status === 200) {
+          this.setState({
+            alert_message: 'Registration Succesfull. Please login.',
+            alert_type: 'success',
+            showLogIn: false,
+            token: data.token
+          })
+          if(data.token){
+            this.storeTokenLocal(data.token)
+          }
+        } else {
+          this.setState({
+            alert_message: data.error,
+            alert_type: 'danger',
+            showLogIn: false
+          })
+          
+        }
+        this.setState({show:true},()=>{
+          window.setTimeout(()=>{
+            this.setState({show:false})
+          },3000)
+        });
+      }
+    }
+    addComment(req)
+    
+  }
+
+
+  storeTokenLocal = (token) => {
+    localStorage.setItem('token', JSON.stringify(token));
+    Router.push('/weatherapp')
+  }
+
+
   render() {
-    const { email, password } = this.state
+    const { email, password, token } = this.state
     console.log(email)
     console.log(password)
+    console.log(token)
     return (
       <div className="bg-white rounded-2xl shadow-2xl flex w-2/3 max-w-4xl">
         {/* Sign in Section */}
@@ -34,7 +132,7 @@ class LoginForm extends Component {
             </h2>
             <div className="border-2 w-10 border-green-500 inline-block mb-2"></div>
             <div className="bg-white py-8 px-4 sm:px-10">
-              <form className="space-y-6" action="#" method="POST">
+              <form className="space-y-6" action="" method="POST">
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium text-gray-700">
                     Email address
@@ -93,8 +191,8 @@ class LoginForm extends Component {
 
                 <div>
                   <button
-                    type="submit"
                     className="w-2/5 flex text-center justify-center py-2 px-4 border border-transparent rounded-full shadow-sm text-sm font-bold text-white bg-green-500 hover:bg-white hover:text-green-500 focus:outline-none"
+                    onClick={(e) => this.processLogIn(e)}
                   >
                     Sign in
                   </button>

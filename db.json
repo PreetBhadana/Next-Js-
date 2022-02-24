@@ -1,9 +1,89 @@
 {
+  "events": [
+    {
+      "id": 1,
+      "title": "Event 1",
+      "discription": "Description 1",
+      "category": "Technical",
+      "date": "April 25"
+    },
+    {
+      "id": 2,
+      "title": "Event 2",
+      "discription": "Description 2",
+      "category": "Sports",
+      "date": "April 26"
+    },
+    {
+      "id": 3,
+      "title": "Event 3",
+      "discription": "Description 3",
+      "category": "Yoga",
+      "date": "April 25"
+    },
+    {
+      "id": 4,
+      "title": "Event 4",
+      "discription": "Description 4",
+      "category": "Technical",
+      "date": "April 28"
+    },
+    {
+      "id": 5,
+      "title": "Event 5",
+      "discription": "Description 5",
+      "category": "Speach",
+      "date": "April 21"
+    },
+    {
+      "id": 6,
+      "title": "Event 6",
+      "discription": "Description 6",
+      "category": "Sports",
+      "date": "April 30"
+    },
+    {
+      "id": 7,
+      "title": "Event 7",
+      "discription": "Description 7",
+      "category": "Speach",
+      "date": "April 27"
+    },
+    {
+      "id": 8,
+      "title": "Event 8",
+      "discription": "Description 8",
+      "category": "CAD",
+      "date": "April 26"
+    },
+    {
+      "id": 9,
+      "title": "Event 9",
+      "discription": "Description 9",
+      "category": "Technical",
+      "date": "April 21"
+    },
+    {
+      "id": 10,
+      "title": "Event 10",
+      "discription": "Description 10",
+      "category": "Bhangra",
+      "date": "October 25"
+    }
+  ],
+
+  "dashboard": {
+    "posts" : 5,
+    "likes" : 150,
+    "folowers" : 185,
+    "folowing": 95
+  },
+
   "news": [
     {
       "id": 1,
       "title": "News Article 1",
-      "description": "Description 1",
+      "description": "New Description 1",
       "category": "sports"
     },
     {

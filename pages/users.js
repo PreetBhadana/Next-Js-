@@ -16,7 +16,6 @@ export async function getStaticProps() {
 function UserList({users}) {
   return (
     <>
-      <Navbar />
       {users.slice(0, 5).map((curElem) => {
         return (
           <div key = {curElem.id} className="ssr-styles">
