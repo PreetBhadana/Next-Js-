@@ -80,7 +80,7 @@ export default class Dashboard extends React.Component {
 		if(this.state.coordinates){
 			let lon = this.state.longitude
 			let lat = this.state.latitude
-			let url = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=9cb15e7813e8e224ac9c6fcd05bb76ab`
+			let url = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=''`
 			const res = await fetch(url);
 	  	const result = await res.json()
 	    if(result.cod === 200){

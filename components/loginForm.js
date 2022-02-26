@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Router from 'next/router';
-import axios from 'axios';
 
 export async function getStaticProps() {
   const res = await fetch('https://jsonplaceholder.typicode.com/users')
@@ -131,6 +130,15 @@ class LoginForm extends Component {
               Sign in to Account
             </h2>
             <div className="border-2 w-10 border-green-500 inline-block mb-2"></div>
+            <div>
+              <button
+                className="w-2/5 flex text-center justify-center py-2 px-4 border border-transparent rounded-full shadow-sm text-sm font-bold text-white bg-green-500 hover:bg-white hover:text-green-500 focus:outline-none"
+                onClick={(e) => this.processLogIn(e)}
+              >
+                GitHub Login
+              </button>
+            </div>
+            
             <div className="bg-white py-8 px-4 sm:px-10">
               <form className="space-y-6" action="" method="POST">
                 <div>
