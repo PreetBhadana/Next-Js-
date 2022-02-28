@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Router from 'next/router';
+import Link from 'next/link';
 
 export async function getStaticProps() {
   const res = await fetch('https://jsonplaceholder.typicode.com/users')
@@ -215,7 +216,9 @@ class LoginForm extends Component {
           <h2 className="text-3xl font-bold mb-2">Hello, Friend!</h2>
           <div className="border-2 w-10 border-white inline-block mb-2"></div>
           <p className="mb-10">Fill up your persional Info and start your journey with us.</p>
-          <a href="#" className="border-2 border-white rounded-full px-12 py-2 inline-block font-semibold hover:bg-white hover:text-green-500">Sign up</a>
+          <Link href='/signup'>
+            <a className="border-2 border-white rounded-full px-12 py-2 inline-block font-semibold hover:bg-white hover:text-green-500">Sign up</a>
+          </Link>
         </div>
       </div>
     );
